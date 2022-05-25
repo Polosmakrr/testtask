@@ -5,6 +5,10 @@ import { BrowserRouter } from 'react-router-dom';
 import { Provider } from 'react-redux';
 import store from './redux/store';
 import './scss/main.scss';
+import AgencyAxios from 'axios';
+
+window.AgencyAxios = AgencyAxios;
+AgencyAxios.defaults.baseURL = 'https://frontend-test-assignment-api.abz.agency/api/v1/';
 
 ReactDOM.render(
   <React.StrictMode>

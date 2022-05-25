@@ -6,16 +6,16 @@
   background-size: cover;
   background-position: center;
   height: 500px;
-  background-image: url('../../picture/img/pexels-alexandr-podvalny-360px.jpeg');
+  background-image: url('../../picture/img/pexels-alexandr-podvalny-360px.jpg');
 
   @media screen and (min-width: 768px) {
     padding-top: 89px;
-    background-image: url('../../picture/img/pexels-alexandr-podvalny-768px.jpeg');
+    background-image: url('../../picture/img/pexels-alexandr-podvalny-768px.jpg');
   }
   @media screen and (min-width: 1024px) {
     padding-top: 164px;
     height: 650px;
-    background-image: url('../../picture/img/pexels-alexandr-podvalny-1024px.jpeg');
+    background-image: url('../../picture/img/pexels-alexandr-podvalny-1024px.jpg');
   }
 }
 

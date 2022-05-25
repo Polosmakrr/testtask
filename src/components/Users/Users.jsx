@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../../redux/operations';
 import UsersCard from './UsersCard';
@@ -6,41 +6,30 @@ import UsersCard from './UsersCard';
 const Users = () => {
   const dispatch = useDispatch();
   const users = useSelector(state => state.data.users);
-  const [page, setPage] = useState(1);
 
   useEffect(() => {
-    console.log('1', users);
-    if (users.length === 0) {
-      dispatch(fetchUsers(page));
+    if (users.page === 1) {
       return;
     }
-    if (page === users[0].page) {
-      return;
-    }
-    dispatch(fetchUsers(page));
-  }, [page]);
+    dispatch(fetchUsers(1));
+  }, []);
 
   const showMore = () => {
-    console.log('page', page);
-    console.log('total-page', users[0].total_pages);
-    if (page === users[0].total_pages - 1) {
-      console.log('fimish');
+    const nextPage = users.page + 1;
+
+    dispatch(fetchUsers(nextPage));
+
+    if (nextPage === users.total_pages) {
       document.querySelector('#showMore').classList.add('hidden');
     }
-    setPage(page + 1);
   };
 
   return (
     <section className="users_container container">
       <h2 className="users_title">Working with GET request</h2>
-      <ul className="users_list list">{users.length !== 0 && <UsersCard data={users} />}</ul>
-      {users.length !== 0 && (
-        <button
-          id="showMore"
-          className="btn"
-          onClick={showMore}
-          disabled={page === users[0].total_pages}
-        >
+      <ul className="users_list list">{users.users.length && <UsersCard users={users.users} />}</ul>
+      {users.users.length && (
+        <button id="showMore" className="btn" onClick={showMore}>
           Show more
         </button>
       )}

@@ -1,7 +1,21 @@
 import { combineReducers, createReducer } from '@reduxjs/toolkit';
 
-const users = createReducer([], {
-  fetchUsersSuccess: (_, { payload }) => [payload],
+const defaultUsersState = {
+  users: [],
+  page: 0,
+  total_pages: 0,
+};
+
+const users = createReducer(defaultUsersState, {
+  fetchUsersSuccess: (state, { payload }) => {
+    const newUsers = state.users.concat(payload.users);
+
+    return {
+      ...state,
+      ...payload,
+      users: newUsers,
+    };
+  },
 });
 
 const positions = createReducer([], {

@@ -4,6 +4,10 @@
   width: 100%;
 }
 
+.nav_container {
+  background-color: var(--white-color);
+}
+
 .nav {
   display: flex;
   padding-left: 16px;
@@ -23,13 +27,15 @@
     padding-left: 60px;
     padding-right: 60px;
   }
+
+  @media screen and(min-width:2560px) {
+    padding-left: 0;
+    padding-right: 0;
+  }
 }
 
 .nav_logo {
   padding-right: 14px;
-}
-
-.nav_buttons {
 }
 
 .nav_buttons-item {

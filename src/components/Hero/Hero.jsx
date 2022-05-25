@@ -5,6 +5,7 @@ const Hero = () => {
 
   const onSignUp = () => {
     navigate('signup');
+
     setTimeout(() => {
       window.scrollTo({ top: document.body.clientHeight / 2, behavior: 'smooth' });
     }, 500);

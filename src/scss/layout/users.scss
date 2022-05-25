@@ -57,6 +57,10 @@
       margin-bottom: 29px;
     }
   }
+
+  @media screen and(min-width:2560px) {
+    width: 370px;
+  }
 }
 
 .users_img {
@@ -74,9 +78,6 @@
 .users_name {
   padding-bottom: 20px;
   overflow: hidden;
-}
-
-.users_description {
 }
 
 .users_contacts {
