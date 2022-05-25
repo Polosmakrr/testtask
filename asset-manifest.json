@@ -1,17 +1,17 @@
 {
   "files": {
-    "main.css": "/testtask/static/css/main.438f0b80.css",
-    "main.js": "/testtask/static/js/main.6f51cc53.js",
+    "main.css": "/testtask/static/css/main.ffb0d694.css",
+    "main.js": "/testtask/static/js/main.3c94a856.js",
     "static/media/pexels-alexandr-podvalny-1024px.jpeg": "/testtask/static/media/pexels-alexandr-podvalny-1024px.be7665f876bbd9138501.jpeg",
     "static/media/pexels-alexandr-podvalny-768px.jpeg": "/testtask/static/media/pexels-alexandr-podvalny-768px.4d9c1df7309b5db43cef.jpeg",
     "static/media/pexels-alexandr-podvalny-360px.jpeg": "/testtask/static/media/pexels-alexandr-podvalny-360px.0ec46966d8c704ca6689.jpeg",
     "static/media/logo.svg": "/testtask/static/media/logo.8bb55362d01d55393ccc5476d96f0c14.svg",
     "index.html": "/testtask/index.html",
-    "main.438f0b80.css.map": "/testtask/static/css/main.438f0b80.css.map",
-    "main.6f51cc53.js.map": "/testtask/static/js/main.6f51cc53.js.map"
+    "main.ffb0d694.css.map": "/testtask/static/css/main.ffb0d694.css.map",
+    "main.3c94a856.js.map": "/testtask/static/js/main.3c94a856.js.map"
   },
   "entrypoints": [
-    "static/css/main.438f0b80.css",
-    "static/js/main.6f51cc53.js"
+    "static/css/main.ffb0d694.css",
+    "static/js/main.3c94a856.js"
   ]
 }
