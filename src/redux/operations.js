@@ -1,6 +1,5 @@
 import * as actions from './actions';
 import axios from 'axios';
-import { useDebugValue } from 'react';
 
 axios.defaults.baseURL = 'https://frontend-test-assignment-api.abz.agency/api/v1/';
 
@@ -30,16 +29,12 @@ export const fetchPositions = () => dispatch => {
 
 export const postUser = (formData, token) => dispatch => {
   dispatch(actions.postUserRequest());
-
-  console.log('DATA:', formData);
   axios
     .post(`/users`, formData, {
       headers: { Token: token },
     })
 
-    .then(responce => {
-      console.log('responce', responce);
-    })
+    .then(responce => {})
 
     .catch(error => console.log('error', error));
 };

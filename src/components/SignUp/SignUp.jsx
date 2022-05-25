@@ -1,5 +1,5 @@
 import axios from 'axios';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchPositions, postUser } from '../../redux/operations';
 
@@ -7,6 +7,11 @@ const SignUp = () => {
   const dispatch = useDispatch();
   const positions = useSelector(state => state.data.positions[0]);
   const { signUp } = document.forms;
+  const [name, setName] = useState([]);
+  const [phone, setPhone] = useState([]);
+  const [email, setEmail] = useState([]);
+  const [radio, setRadio] = useState([]);
+  const [photo, setPhoto] = useState([]);
 
   useEffect(() => {
     dispatch(fetchPositions());
@@ -24,16 +29,13 @@ const SignUp = () => {
       phone: phone.value,
       photo: photo.files[0],
     };
-    const formData = new FormData();
 
+    const formData = new FormData();
     formData.append('name', values.name);
     formData.append('email', values.emali);
     formData.append('phone', values.phone);
     formData.append('position_id', parseInt(values.position_id));
     formData.append('photo', values.photo);
-
-    const param = Object.fromEntries(formData.entries());
-    console.log('param:', param);
 
     axios.defaults.baseURL = 'https://frontend-test-assignment-api.abz.agency/api/v1/';
     let token = '';
@@ -51,6 +53,36 @@ const SignUp = () => {
     }, 500);
   };
 
+  const check = e => {
+    const { name, value } = e.target;
+
+    if (name === 'name') {
+      setName(value);
+    }
+    if (name === 'email') {
+      setEmail(value);
+    }
+    if (name === 'phone') {
+      setPhone(value);
+    }
+    if (name === 'position_id') {
+      setRadio(value);
+    }
+    if (name === 'photo') {
+      setPhoto(value);
+    }
+  };
+
+  if (
+    name.length !== 0 &&
+    email.length !== 0 &&
+    phone.length !== 0 &&
+    radio.length !== 0 &&
+    photo.length !== 0
+  ) {
+    document.querySelector('#submit').disabled = false;
+  }
+
   return (
     <section className="container">
       <div className="signup_container">
@@ -65,6 +97,7 @@ const SignUp = () => {
             maxLength={60}
             title="Username should contain 2-60 characters and contain only letters, apostrophe, dash and spaces."
             placeholder="Your Name"
+            onChange={check}
             required
           />
           <input
@@ -76,6 +109,7 @@ const SignUp = () => {
             maxLength={100}
             title="Email myst be a string and separated into two parts by @ symbol. a personal_info and a domain, that is personal_info@domain."
             placeholder="Email"
+            onChange={check}
             required
           />
           <input
@@ -85,6 +119,7 @@ const SignUp = () => {
             pattern="^[\+]{0,1}380([0-9]{9})$)"
             title="Number should start with code of Ukraine +380 and must be digits and can contain spaces, dashes."
             placeholder="Phone"
+            onChange={check}
             required
           />
           <div className="signup_select">
@@ -99,6 +134,7 @@ const SignUp = () => {
                       id={item.id}
                       name="position_id"
                       value={item.id}
+                      onChange={check}
                     />
                     <label className="signup_select_list-label" for={item.id}>
                       {item.name}
@@ -124,10 +160,11 @@ const SignUp = () => {
               type="file"
               title="Minimum size of photo 70x70px. The photo format must be jpeg/jpg type. The photo size must not be greater than 5 Mb."
               name="photo"
+              onChange={check}
             />
           </div>
           <div className="signup_buttons">
-            <button className="btn" type="submit">
+            <button className="btn" type="submit" id="submit" disabled>
               Sign up
             </button>
           </div>

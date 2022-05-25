@@ -1,8 +1,7 @@
 .users_container {
-  padding-top: 140px;
+  padding-bottom: 140px;
   padding-left: 16px;
   padding-right: 16px;
-  padding-bottom: 140px;
   text-align: center;
 }
 
@@ -74,6 +73,7 @@
 
 .users_name {
   padding-bottom: 20px;
+  overflow: hidden;
 }
 
 .users_description {
@@ -82,4 +82,9 @@
 .users_contacts {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
+}
+
+.hidden {
+  display: none;
 }

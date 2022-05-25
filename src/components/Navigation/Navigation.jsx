@@ -7,9 +7,16 @@ const Navigation = () => {
 
   const onUsers = () => {
     navigate('users');
+    setTimeout(() => {
+      window.scrollTo({ top: document.body.clientHeight / 2, behavior: 'smooth' });
+    }, 500);
   };
+
   const onSignUp = () => {
     navigate('signup');
+    setTimeout(() => {
+      window.scrollTo({ top: document.body.clientHeight / 2, behavior: 'smooth' });
+    }, 500);
   };
 
   return (

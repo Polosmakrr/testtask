@@ -13,4 +13,9 @@
   &:focus {
     background: var(--hover-color);
   }
+  &:disabled {
+    background-color: var(--disabled-color);
+    color: var(--white-color);
+    cursor: inherit;
+  }
 }

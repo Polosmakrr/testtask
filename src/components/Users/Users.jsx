@@ -9,10 +9,24 @@ const Users = () => {
   const [page, setPage] = useState(1);
 
   useEffect(() => {
+    console.log('1', users);
+    if (users.length === 0) {
+      dispatch(fetchUsers(page));
+      return;
+    }
+    if (page === users[0].page) {
+      return;
+    }
     dispatch(fetchUsers(page));
   }, [page]);
 
   const showMore = () => {
+    console.log('page', page);
+    console.log('total-page', users[0].total_pages);
+    if (page === users[0].total_pages - 1) {
+      console.log('fimish');
+      document.querySelector('#showMore').classList.add('hidden');
+    }
     setPage(page + 1);
   };
 
@@ -20,8 +34,13 @@ const Users = () => {
     <section className="users_container container">
       <h2 className="users_title">Working with GET request</h2>
       <ul className="users_list list">{users.length !== 0 && <UsersCard data={users} />}</ul>
-      {users && (
-        <button className="btn" onClick={showMore} disabled={page === users.total_pages}>
+      {users.length !== 0 && (
+        <button
+          id="showMore"
+          className="btn"
+          onClick={showMore}
+          disabled={page === users[0].total_pages}
+        >
           Show more
         </button>
       )}

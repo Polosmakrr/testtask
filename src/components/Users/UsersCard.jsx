@@ -18,6 +18,8 @@ const UsersCard = ({ data }) => {
     }
   }, [data]);
 
+  console.log(users.map(item => console.log('photo:', item.photo)));
+
   return (
     <>
       {users.map(item => (
