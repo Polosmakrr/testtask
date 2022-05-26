@@ -11,3 +11,6 @@ export const fetchPositionsError = createAction('fetchPositionsError');
 export const postUserRequest = createAction('postUserRequest');
 export const postUserSuccess = createAction('postUserSuccess');
 export const postUserError = createAction('postUserError');
+
+export const clearResponse = createAction('clearResponse');
+export const clearState = createAction('clearState');

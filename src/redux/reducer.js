@@ -16,13 +16,25 @@ const users = createReducer(defaultUsersState, {
       users: newUsers,
     };
   },
+
+  clearState: state => (state = defaultUsersState),
 });
 
 const positions = createReducer([], {
   fetchPositionsSuccess: (_, { payload }) => [payload],
 });
 
+const postResponse = createReducer(
+  {},
+  {
+    postUserSuccess: (_, { payload }) => payload,
+    postUserError: (_, { payload }) => payload.response,
+    clearResponse: state => (state = {}),
+  },
+);
+
 export default combineReducers({
   users,
   positions,
+  postResponse,
 });

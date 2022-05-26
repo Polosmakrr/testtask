@@ -27,8 +27,10 @@ export const postUser = (formData, token) => dispatch => {
   })
     .then(responce => {
       dispatch(actions.postUserSuccess(responce));
+      return responce;
     })
     .catch(error => {
       dispatch(actions.postUserError(error));
+      return error;
     });
 };

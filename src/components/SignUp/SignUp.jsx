@@ -1,10 +1,16 @@
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { useNavigate } from 'react-router-dom';
 import { fetchPositions, postUser } from '../../redux/operations';
+import * as actions from '../../redux/actions';
+import { toast, ToastContainer } from 'react-toastify';
+import SuccesImg from '../../picture/svg/success-image.svg';
 
 const SignUp = () => {
   const dispatch = useDispatch();
   const positions = useSelector(state => state.data.positions[0]);
+  const response = useSelector(state => state.data.postResponse);
+  const navigate = useNavigate();
   const { signUp } = document.forms;
   const [name, setName] = useState([]);
   const [phone, setPhone] = useState([]);
@@ -39,6 +45,25 @@ const SignUp = () => {
       .then(({ data }) => dispatch(postUser(formData, data.token)))
       .catch(error => error);
   };
+
+  useEffect(() => {
+    if (response.status === 409) {
+      toast.error('User with this phone or email already exist');
+    }
+    if (response.status === 422) {
+      toast.error('Check your entrance data');
+    }
+    if (response.status === 201) {
+      setTimeout(() => {
+        window.scrollTo({ top: document.body.clientHeight, behavior: 'smooth' });
+      }, 500);
+      toast.success('Users was added!');
+      setTimeout(() => {
+        dispatch(actions.clearResponse());
+        navigate('/testtask/users');
+      }, 3000);
+    }
+  }, [response]);
 
   const check = e => {
     const { name, value } = e.target;
@@ -162,6 +187,8 @@ const SignUp = () => {
           </div>
         </form>
       </div>
+      {response.status === 201 && <img style={{ margin: 'auto' }} src={SuccesImg} alt="success" />}
+      <ToastContainer autoClose={1000} />
     </section>
   );
 };

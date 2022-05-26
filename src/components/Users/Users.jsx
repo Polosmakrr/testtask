@@ -2,15 +2,14 @@ import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchUsers } from '../../redux/operations';
 import UsersCard from './UsersCard';
+import * as actions from '../../redux/actions';
 
 const Users = () => {
   const dispatch = useDispatch();
   const users = useSelector(state => state.data.users);
 
   useEffect(() => {
-    if (users.page === 1) {
-      return;
-    }
+    dispatch(actions.clearState());
     dispatch(fetchUsers(1));
   }, []);
 
