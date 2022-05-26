@@ -4,7 +4,6 @@ import { lazy, Suspense } from 'react';
 
 const Users = lazy(() => import('./components/Users/Users'));
 const SignUp = lazy(() => import('./components/SignUp/SignUp'));
-// const Succesfull = lazy(() => import('./components/Succesfull/Succesfull'));
 
 function App() {
   return (
@@ -13,7 +12,6 @@ function App() {
         <Route path="testtask" element={<Navigation />}>
           <Route path="users" element={<Users />} />
           <Route path="signup" element={<SignUp />} />
-          {/* <Route path="success" element={<Succesfull/>}/> */}
         </Route>
       </Routes>
     </Suspense>
